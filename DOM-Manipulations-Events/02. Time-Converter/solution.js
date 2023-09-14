@@ -25,6 +25,7 @@ function attachEventsListeners() {
 
     function convert(value, unit){
         let days = value / rotations[unit]
+             
         return {
             days: days,
             hours: days*rotations.hours,
@@ -41,7 +42,6 @@ function attachEventsListeners() {
         minutes.value = time.minutes
         seconds.value = time.seconds
           
-
     }
 
 
