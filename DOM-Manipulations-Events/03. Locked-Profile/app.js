@@ -1,12 +1,9 @@
 function lockedProfile() {
 
-    let button = document.getElementsByTagName('button')
-    let firstButton = button[0].addEventListener('click', onClick)
-    let secondButton = button[1].addEventListener('click', onClick)
-    let thirdButton = button[2].addEventListener('click', onClick)
-    
-    
-
+    Array.from(document.getElementsByTagName('button')).forEach(el => {
+        el.addEventListener('click', onClick)
+    })
+   
     function onClick (e){
         let isLocked = e.target.parentElement.children[2].checked
         let additionalInfo = e.target.parentElement.children[9]
@@ -20,9 +17,5 @@ function lockedProfile() {
             additionalInfo.style.display = 'none'
             currentButton.textContent = 'Show more'
         }
-
-   
-        
-
     }
 }
