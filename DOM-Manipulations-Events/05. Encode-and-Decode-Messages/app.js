@@ -21,8 +21,4 @@ function encodeAndDecodeMessages() {
 
         secondTextArea.value = decodedWord
     }
-
-
-
-
 }
