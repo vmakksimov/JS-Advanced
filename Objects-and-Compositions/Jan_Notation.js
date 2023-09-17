@@ -55,10 +55,4 @@ function solve(array){
 }
 
 
-console.log(solve([7,
-
-    33,
-    
-    8,
-    
-    '-']))
+console.log(solve([7, 33, 8,'-']))
