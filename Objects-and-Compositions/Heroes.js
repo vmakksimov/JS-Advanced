@@ -13,7 +13,7 @@ function solve(){
         let state = {
             name,
             health: 100,
-            staming: 100,
+            stamina: 100,
         }
         return Object.assign(state, canFight(state))
     }
