@@ -1,6 +1,4 @@
 function solution(number){
-    // data = new Map();
-    // console.log(data.size)
 
     function add(a, b){
         return a + b;
