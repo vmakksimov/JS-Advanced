@@ -1,22 +1,45 @@
-function solve(array){
+function solve(array) {
 
-    let result = []
-    for (let string of array){
-        let new_string = string.split(' ')
-        let command = new_string[0]
-        let word = new_string[1]
-        
-        if (command === 'add'){
-            result.push(word)
-        }else if (command === 'remove'){
-            result = result.filter(x => x !== word)
-        }else{
-            console.log(result.join(','))
+    let collection = [];
+
+    let result = {
+        add,
+        remove,
+        print
+    }
+
+    function add(str) {
+        collection.push(str)
+
+    }
+
+    function remove(str) {
+        collection = collection.filter(x => x !== str)
+    }
+
+    function print() {
+        console.log(collection.join(','))
+    }
+
+    for (let el of array) {
+        let line = el.split(' ')
+        let command = line[0]
+        let word = line[1]
+
+        if (command === 'add') {
+            result.add(word)
+        } else if (command === 'remove') {
+
+            result.remove(word)
+
+        } else {
+            result.print()
         }
     }
 
+
 }
 
-console.log(solve(['add hello', 'add again', 'remove hello',
+solve(['add hello', 'add again', 'remove hello',
 
-'add again', 'print']))
+    'add again', 'print'])
