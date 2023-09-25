@@ -18,7 +18,6 @@ function getPersons() {
     ]
 }
 
-console.log(getPersons())
 
 
 

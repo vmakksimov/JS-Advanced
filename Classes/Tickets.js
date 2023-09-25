@@ -12,14 +12,21 @@ function solve(array, command){
     array.forEach(element => {
         let [destination, price, status] = element.split('|')
         let ticket = new Ticket(destination, Number(price), status)
-        
         result.push(ticket)
         
     });
 
+    return result.sort((a, b) => {
+        if (typeof(a[command]) === 'number'){
+            return a[command] -b[command]
+        }else{
+            return a[command].localeCompare(b[command])
+        }
+    })
+
 }
 
-solve(['Philadelphia|94.20|available',
+console.log(solve(['Philadelphia|94.20|available',
 
 'New York City|95.99|available',
 
@@ -27,4 +34,4 @@ solve(['Philadelphia|94.20|available',
 
 'Boston|126.20|departed'],
 
-'destination')
+'destination'))
