@@ -3,8 +3,8 @@ function solve() {
     let hall = document.querySelector('input[placeholder=Hall]')
     let ticketPrice = document.querySelector('input[type=text]:nth-child(3)')
     let moviesUl = document.querySelector('#movies ul')
-
-    let onScreenButton = document.querySelector('button').addEventListener('click', onScreen)
+    let archieveUl =document.querySelector('#archive ul')
+    document.querySelector('button').addEventListener('click', onScreen)
    
     function onScreen(e){
         e.preventDefault()
@@ -35,6 +35,30 @@ function solve() {
             name.value = ''
             hall.value = ''
             ticketPrice.value = ''
+
+            buttonArchieve.addEventListener('click', archieveButton)
+
+            function archieveButton(e){
+                e.preventDefault()
+                let isNumber = !isNaN(e.target.previousElementSibling.value)
+                if (isNumber){
+                    console.log(e.target.parentElement.parentElement.parentElement)
+                    let li = document.createElement('li')
+                    let span = document.createElement('span')
+                    let strong = document.createElement('strong')
+                    let button = document.createElement('button')
+                    button.textContent = 'Delete'
+                    span.innerHTML = e.target.parentElement.parentElement.children[0].textContent
+                    strong.textContent = `Total Amount: ${Number(e.target.previousElementSibling.value* Number(e.target.previousSibling.previousSibling.textContent)).toFixed(2)}`
+
+                    li.appendChild(span)
+                    li.appendChild(strong)
+                    li.appendChild(button)
+                    archieveUl.appendChild(li)
+                    e.target.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement)
+
+                }
+            }
             
         }
     }
