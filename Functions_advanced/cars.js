@@ -53,9 +53,7 @@ function solve(array) {
             []
         })
 
-
     }
-
     array.forEach(element => {
         let current = element.split(' ')
         let command = current[0]
