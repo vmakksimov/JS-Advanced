@@ -1,2 +1,1 @@
-data = new Map();
-    // console.log(data.size)
+127, 0, 'controversial'] solution.call(post, 'downvote'); // (executed 50 times) score = solution.call(post, 'score');

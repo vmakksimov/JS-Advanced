@@ -69,10 +69,9 @@ function solve() {
     }
 
     function onClear(e){
-        let parent =e.target.parentElement.children[1]
+        let parent = e.target.parentElement.children[1]
         while (parent.hasChildNodes()){
             parent.removeChild(parent.firstChild)
         }
-        e.target.parentElement.removeChild(e.target.parentElement.children[1].children)
     }
 }
