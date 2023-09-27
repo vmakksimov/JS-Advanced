@@ -20,7 +20,6 @@ class Stringer{
         if (this.innerLength <= 0){
             return '...'
         }else if (this.innerString.length > this.innerLength){
-            console.log(this.innerString.length)
             let difference = this.innerString.length - (this.innerString.length - this.innerLength)
             let newString = this.innerString.substring(-1, difference)
             newString += '...'
