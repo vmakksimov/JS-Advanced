@@ -4,7 +4,7 @@ class Company {
     }
 
     addEmployee(name, salary, position, department) {
-        new Array(name, salary, position, department).some(element => {
+        new Array(name, salary, position, department).forEach(element => {
             if (element === null || element === undefined || element === '' || salary < 0) {
                 throw new Error('Invalid input!')
             }
