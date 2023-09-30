@@ -1,70 +1,82 @@
 
 class Contact {
-	constructor (f, l, p, e) {
-		this.firstName = f
-		this.lastName = l
-		this.phone = p
-		this.email = e
-		this._online = false
-	}
+    constructor(firstName, lastName, phone, email) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.phone = phone
+        this.email = email
+        this._online = false
 
-	get online () {
+    }
+
+    get online () {
 		return this._online
 	}
 
 	set online (v) {
 		this._online = v
 
-		if (this.onlineDiv) {
-			this.onlineDiv.className = this._online ? 'title online' : 'title'
+		if (this.divTitle) {
+			this.divTitle.className = this._online ? 'title online' : 'title'
 		}
 	}
 
-	eFactory (tag, content = '') {
-		const e = document.createElement(tag)
-		e.innerHTML = content
-
-		return e
-	}
-
-	render (id) {
-		this.templ = this.eFactory('article')
-		this.onlineDiv = this.eFactory('div', `${this.firstName} ${this.lastName}`)
-		this.infoBtn = this.eFactory('button', '&#8505;')
-		this.infoDiv =
-			this.eFactory(
-				'div',
-				`<span>&phone; ${this.phone}</span><span>&#9993; ${this.email}</span>`
-			)
 
 
-		this.onlineDiv.className = this.online ? 'title online' : 'title'
-		this.infoDiv.className = 'info'
-		this.infoDiv.style.display = 'none'
+    render(id) {
 
-		this.onlineDiv.appendChild(this.infoBtn)
-		this.templ.appendChild(this.onlineDiv)
-		this.templ.appendChild(this.infoDiv)
+        this.article = document.createElement('article')
+        this.divTitle = document.createElement('div')
+        this.divInfo = document.createElement('div')
+        this.spanPhone = document.createElement('span')
+        this.spanEmail = document.createElement('span')
+        this.button = document.createElement('button')
+        this.button.innerHTML = '&#8505'
 
-		document.getElementById(id).appendChild(this.templ)
+        
 
-		this.infoBtn.addEventListener('click', () => {
-			this.infoDiv.style.display = this.infoDiv.style.display === 'none' ? 'block' : 'none'
-		})
-	}
+        this.divTitle.className = this._online ? 'title online' : 'title'
+        this.divInfo.className = 'info'
+        this.divInfo.style.display = 'none'
+        this.spanPhone.innerHTML = this.phone
+        this.spanEmail.innerHTML = this.email
+        this.divTitle.innerHTML = `${this.firstName} ${this.lastName}`
+        this.divTitle.appendChild(this.button)
+        this.divInfo.appendChild(this.spanEmail)
+        this.divInfo.appendChild(this.spanPhone)
+        this.article.appendChild(this.divTitle)
+        this.article.appendChild(this.divInfo)
+
+
+
+        document.getElementById(id).appendChild(this.article)
+
+        this.button.addEventListener('click', (e) => {
+            let divInfo = e.target.parentElement.parentElement.children[1]
+            if (divInfo.style.display === 'none') {
+                divInfo.style.display = 'block'
+            } else {
+                divInfo.style.display = 'none'
+            }
+        })
+
+
+
+    }
+
+
 }
 
 
 
 
-let newClass = [
 
-    new Contact("Ivan", "Ivanov", "0888 123 456", "i.ivanov@gmail.com"),
+let a = new Contact("Ivan", "Ivanov", "0888 123 456", "i.ivanov@gmail.com")
+let b = new Contact("Maria", "Petrova", "0899 987 654", "mar4eto@abv.bg")
+let c = new Contact("Jordan", "Kirov", "0988 456 789", "jordk@gmail.com")
 
-    new Contact("Maria", "Petrova", "0899 987 654", "mar4eto@abv.bg"),
 
-    new Contact("Jordan", "Kirov", "0988 456 789", "jordk@gmail.com")
-
-]
-
-newClass.forEach(c => c.render('main'));
+a._online = true
+a.render('main')
+b.render('main')
+c.render('main')
