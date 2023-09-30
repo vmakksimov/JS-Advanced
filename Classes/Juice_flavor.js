@@ -2,7 +2,6 @@ function juiceFlavor(array) {
 
     let producedBottles = []
     let inProductionBottles = []
-    let productForProduction = {};
     let productInProduction = {};
     let notInProduction = true
 
@@ -21,14 +20,11 @@ function juiceFlavor(array) {
                 productInProduction[product] += quantity / 1000
                 return bottlesForProduction()
             }
-
             if (inProductionBottles.length <= 0) {
-
                 inProductionBottles.push({ [product]: Math.floor(quantity / 1000) })
             } else {
                 inProductionBottles.map(x => {
                     if (!x.hasOwnProperty(product)) {
-
                         inProductionBottles.push({ [product]: Math.floor(quantity / 1000) })
                     } else {
                         x[product] += Math.floor(quantity / 1000)
@@ -50,22 +46,17 @@ function juiceFlavor(array) {
         }
 
         function bottlesForProduction() {
-
             let lefover = Number((productInProduction[product] - Math.floor(productInProduction[product])).toFixed(3))
             let fullBottle = productInProduction[product] - lefover
             productInProduction[product] -= fullBottle
-
             for (let el of inProductionBottles){
                 if (el.hasOwnProperty(product)){
                     el[product] += fullBottle
                     return el[product]
                 }
             }
-
             inProductionBottles.push({ [product]: fullBottle })
-
         }
-
     });
 
     let result = ''
