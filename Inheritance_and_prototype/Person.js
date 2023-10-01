@@ -16,9 +16,10 @@ class Person{
 
     }
 
+
 }
 
 let person = new Person("Peter", "Ivanov");
-person.fullName = 'Viktor - 32'
+// person.fullName = 'Viktor - 32'
 console.log(person.fullName);
 console.log(person)
