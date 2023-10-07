@@ -92,7 +92,6 @@ class ArtGallery {
             })
 
         }
-
         return result.trim()
     }
 }
